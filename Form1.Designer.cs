@@ -93,6 +93,7 @@
             btnInsertImage.TabIndex = 5;
             btnInsertImage.Text = "Insert Image";
             btnInsertImage.UseVisualStyleBackColor = true;
+            btnInsertImage.Click += btnInsertImage_Click;
             // 
             // Form1
             // 
