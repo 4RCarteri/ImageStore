@@ -79,7 +79,17 @@ namespace ImageStore
             txtImageName.Text = null;
             txtImageName.Enabled = false;
             btnInsertImage.Enabled = false;
+        }
 
+        private void btnRecoverImage_Click(object sender, EventArgs e)
+        {
+            Close();
+            Thread recoverImageThread = new Thread(() =>
+            {
+                Application.Run(new Form2());
+            });
+            recoverImageThread.SetApartmentState(ApartmentState.STA);
+            recoverImageThread.Start();
         }
     }
 }

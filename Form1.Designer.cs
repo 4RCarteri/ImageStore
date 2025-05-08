@@ -83,6 +83,7 @@
             btnRecoverImage.TabIndex = 4;
             btnRecoverImage.Text = "Recover Image";
             btnRecoverImage.UseVisualStyleBackColor = true;
+            btnRecoverImage.Click += btnRecoverImage_Click;
             // 
             // btnInsertImage
             // 
