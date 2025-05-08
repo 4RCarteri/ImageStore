@@ -73,6 +73,7 @@
             btnSelectImage.TabIndex = 3;
             btnSelectImage.Text = "Select Image";
             btnSelectImage.UseVisualStyleBackColor = true;
+            btnSelectImage.Click += btnSelectImage_Click;
             // 
             // btnRecoverImage
             // 
