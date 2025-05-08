@@ -59,6 +59,7 @@
             btnDeleteImage.TabIndex = 4;
             btnDeleteImage.Text = "Delete";
             btnDeleteImage.UseVisualStyleBackColor = true;
+            btnDeleteImage.Click += btnDeleteImage_Click;
             // 
             // btnSaveImage
             // 

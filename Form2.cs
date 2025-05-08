@@ -18,7 +18,6 @@ namespace ImageStore
             {
                 DataTable dt = new DataTable();
                 conn.Open();
-                da.Fill(dt);
 
                 if (da.Fill(dt) < 1)
                 {
@@ -68,7 +67,7 @@ namespace ImageStore
 
             try
             {
-                string id = dgImageList.SelectedRows[0].Cells[0].Value.ToString();
+                string id = dgImageList.SelectedRows[0].Cells[0].Value.ToString()!;
                 string sql = $"SELECT * FROM images WHERE id = {id}";
                 MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
@@ -94,7 +93,49 @@ namespace ImageStore
             finally
             {
                 conn.Close();
-                conn.Dispose();
+            }
+        }
+
+        private void btnDeleteImage_Click(object sender, EventArgs e)
+        {
+            string strConn = "Server=localhost;Database=CS;Uid=root;Pwd=root;";
+            MySqlConnection conn = new MySqlConnection(strConn);
+            string id = dgImageList.SelectedRows[0].Cells[0].Value.ToString();
+            string sql = $"DELETE FROM images WHERE id = {id}";
+
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    if (dgImageList.Rows.Count > 1)
+                    {
+                        picImage.Image = null;
+                        lblResult.Text = "Image deleted successfully!";
+                        lblResult.ForeColor = Color.Green;
+                        dgImageList.Rows.RemoveAt(dgImageList.SelectedRows[0].Index);
+                    }
+                    else
+                    {
+                        btnExit_Click(sender, e);
+                    }
+                }
+                else
+                {
+                    lblResult.Text = "Error on delete image.";
+                    lblResult.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                lblResult.Text = $"Error on delete image:\n{ex.Message}";
+                lblResult.Visible = true;
+            }
+            finally
+            {
+                conn.Close();
             }
         }
     }
