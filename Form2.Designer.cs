@@ -70,6 +70,7 @@
             btnSaveImage.TabIndex = 5;
             btnSaveImage.Text = "Save";
             btnSaveImage.UseVisualStyleBackColor = true;
+            btnSaveImage.Click += btnSaveImage_Click;
             // 
             // btnExit
             // 

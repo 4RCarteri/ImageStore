@@ -138,5 +138,28 @@ namespace ImageStore
                 conn.Close();
             }
         }
+
+        private void btnSaveImage_Click(object sender, EventArgs e)
+        {
+            lblResult.Visible = false;
+            lblResult.Text = string.Empty;
+
+            try
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+                saveFileDialog.FileName = dgImageList.SelectedRows[0].Cells[1].Value.ToString();
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    picImage.Image.Save(saveFileDialog.FileName, picImage.Image.RawFormat);
+                    MessageBox.Show("Image saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                lblResult.Text = $"Error on trying save image:\n{ex.Message}";
+                lblResult.Visible = true;
+            }
+        }
     }
 }
