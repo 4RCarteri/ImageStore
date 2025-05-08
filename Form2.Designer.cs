@@ -52,15 +52,18 @@
             // 
             // btnDeleteImage
             // 
+            btnDeleteImage.Enabled = false;
             btnDeleteImage.Location = new Point(376, 308);
             btnDeleteImage.Name = "btnDeleteImage";
             btnDeleteImage.Size = new Size(203, 58);
             btnDeleteImage.TabIndex = 4;
             btnDeleteImage.Text = "Delete";
             btnDeleteImage.UseVisualStyleBackColor = true;
+            btnDeleteImage.Click += btnDeleteImage_Click;
             // 
             // btnSaveImage
             // 
+            btnSaveImage.Enabled = false;
             btnSaveImage.Location = new Point(376, 372);
             btnSaveImage.Name = "btnSaveImage";
             btnSaveImage.Size = new Size(203, 58);
@@ -96,6 +99,7 @@
             dgImageList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgImageList.Size = new Size(358, 186);
             dgImageList.TabIndex = 7;
+            dgImageList.SelectionChanged += dgImageList_SelectionChanged;
             // 
             // id
             // 
